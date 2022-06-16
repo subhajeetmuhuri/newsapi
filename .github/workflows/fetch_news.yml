@@ -1,0 +1,23 @@
+name: Fetch news
+
+on:
+  schedule:
+    - cron: '0 */5 * * *'
+
+env:
+  NEWSAPI_KEY: ${{secrets.NEWSAPI_KEY}}
+
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Execute fetch_news.sh
+        run: "${GITHUB_WORKSPACE}/.github/scripts/fetch_news.sh"
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Fetched news
+          commit_author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
