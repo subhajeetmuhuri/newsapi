@@ -2,7 +2,7 @@ name: Fetch news
 
 on:
   schedule:
-    - cron: '0 */5 * * *'
+    - cron: '0 */6 * * *'
 
 env:
   NEWSAPI_KEY: ${{secrets.NEWSAPI_KEY}}
